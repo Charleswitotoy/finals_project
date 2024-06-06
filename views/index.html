@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    table {
+      border-collapse: collapse;
+      width: 100%; /* Adjust width as needed */
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+
+    }
+    th, td {
+      padding: 8px;
+      text-align: left; /* Adjust alignment if needed */
+      border: 1px solid #000000;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    /* Base styles for the button */
+    .addUser {
+      background-color: #4CAF50;  /* Green */
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(0, 0, 0, 0.2); 
+    }
+
+    /* Add hover effect with slightly darker green */
+    .addUser:hover {
+      background-color: #3e8e41;
+    }
+
+    /* Add icon (optional) */
+    .addUser::before {
+      content: "+"; /* Plus sign for adding user */
+      margin-right: 5px;
+      font-size: 18px;
+    }
+  </style>
+  
+<body>
+  <div>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Manipulate Data</th>
+            </tr>
+        </thead>
+        <tbody id="tbody">
+            
+        </tbody>
+    </table>
+  </div>
+
+  <div>
+    <br>
+    <a href="newUser.html" class="addUser">Add new user</a>
+  </div>
+
+  <!-- <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>City</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>John</td>
+        <td>30</td>
+        <td>New York</td>
+        <td><label><input type="radio" name="selectedRow" value="John,30,New York"></label></td>
+      </tr>
+      <tr>
+        <td>Jane</td>
+        <td>25</td>
+        <td>Los Angeles</td>
+        <td><label><input type="radio" name="selectedRow" value="Jane,25,Los Angeles"></label></td>
+      </tr>
+    </tbody>
+  </table>
+  <br>
+  <p id="selectedData"></p> -->
+</body>
+<script src="/scripts/script.js"></script>
+</html>
