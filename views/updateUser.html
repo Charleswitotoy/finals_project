@@ -7,18 +7,16 @@
 </head>
   
 <body>
-    <h1>Enter Your Name</h1>
-    <form action="/users/updateUser"  id="updateForm" method="get">
-        <label for="fname">ID:</label><br>
-        <input type="text" id="id" name="id" value=""><br><br>
+    <!-- <label for="fname">ID:</label><br>
+    <input type="text" id="id" name="id" value=""><br><br> -->
 
-        <label for="fname">First Name:</label><br>
-        <input type="text" id="fname" name="firstname" placeholder="Enter your first name"><br><br>
+    <label for="fname">First Name:</label><br>
+    <input type="text" id="fname" name="firstname" placeholder="Enter your first name"><br><br>
 
-        <label for="lname">Last Name:</label><br>
-        <input type="text" id="lname" name="lastname" placeholder="Enter your last name"><br><br>
+    <label for="lname">Last Name:</label><br>
+    <input type="text" id="lname" name="lastname" placeholder="Enter your last name"><br><br>
 
-        <button type="submit">Update</button>
-    </form>
+    <button id="update" onclick="updateInfo()">Update</button>
 </body>
 </html>
+<script src="/scripts/script.js"></script>

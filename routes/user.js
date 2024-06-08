@@ -7,6 +7,8 @@ const {getData, createUser, updateUser} = require(`../model/database`)
 router.get('/', controller.get)
 router.get('/load', controller.loadTable)
 router.post('/', controller.post)
-router.get('/updateUser', controller.update)
+router.get('/updateUser', controller.toUpdate)
+router.put('/:id', controller.put)
+router.delete('/:id', controller.delete)
 
 module.exports = router

@@ -11,8 +11,8 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td>${row.first_name}</td>
           <td>${row.last_name}</td>
           <td>
-            <button onclick="selectRow(this)">Update</button>
-            <button onclick="deleteRow(this)">Delete</button>
+            <button onclick="selectRow(${row.id})">Update</button>
+            <button onclick="deleteRow(${row.id})">Delete</button>
           </td>
         `
         tableBody.appendChild(tableRow);
@@ -22,31 +22,62 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
   });
 
-const radioButtons = document.querySelectorAll('input[type="radio"]');
-const selectedData = document.getElementById('selectedData');
-
-  radioButtons.forEach(radioButton => {
-    radioButton.addEventListener('change', (event) => {
-      if (event.target.checked) {
-        const selectedValue = event.target.value;
-        selectedData.textContent = `Selected Row: ${selectedValue}`;
-      } else {
-        selectedData.textContent = '';
-      }
-    });
-  });
-
-function selectRow(buttonElement) {
-    // Redirect to the update page
-    window.location.href = "updateUser.html";
+function selectRow(id) {
+  window.location.href = `/users/updateUser?id=${id}`;
 }
 
-document.deleteRow(async () => {
+async function updateInfo() {
+
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get('id');
+  const fname = document.getElementById('fname').value;
+  const lname = document.getElementById('lname').value;
+
   try {
-    const response = await fetch('/users/updateUser');
+      const response = await fetch(`/users/${id}`, {
+          method: 'PUT',
+          headers: {
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+              firstname: fname,
+              lastname: lname
+          })
+      });
+      const result = await response.json();
+      if (result.success) {
+          alert('User updated successfully');
+          window.location.href = `/`
+          // Optionally, update the UI or reload data
+      } else {
+          alert('Error updating user');
+      }
+
   } catch (error) {
-    console.error('Error fetching data:', error);
+      console.error('Error updating user:', error);
+      alert('Error updating user');
   }
-});
+
+}
+
+async function deleteRow(id){
+  try {
+
+    const response = await fetch(`/users/${id}`, {
+        method: 'DELETE'
+    });
+    const result = await response.json();
+
+    if (result.success) {
+        window.location.href = `/`
+        console.log('success');
+    } else {
+        alert('Error deleting user');
+    }
+} catch (error) {
+    console.error('Error deleting user:', error);
+    alert('Error deleting user');
+}
+}
 
 

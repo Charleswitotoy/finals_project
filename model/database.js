@@ -27,7 +27,7 @@ async function updateUser(Id, Firstname, Lastname){
 }
 
 async function deleteUser(Id){
-    const [result] = await pool.query("DELETE FROM `tbl_names` WHERE ?", [Id]);
+    const [result] = await pool.query("DELETE FROM `tbl_names` WHERE id = ?", [Id]);
     return result;
 }
 

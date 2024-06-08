@@ -18,22 +18,29 @@ module.exports = {
             console.error("Error adding new user", error)
         }
     },
-    update: async (req, res) =>{
-        const {id, firstname, lastname} = req.body
-        try{
-            await updateUser(id, firstname, lastname)
-            res.redirect("/users")
-        }catch (error){
-            console.error("Error adding new user", error)
+    toUpdate: async (req, res) =>{
+        res.sendFile(path.join(__dirname, '..', 'views', 'updateUser.html'))
+    },
+    delete: async (req, res) =>{
+        try {
+            const { id } = req.params;
+            await deleteUser(id);
+            res.json({ success: true });
+        } catch (error) {
+            console.error("Error deleting user:", error);
+            res.status(500).json({ success: false, message: "Internal Server Error" });
         }
     },
-    detele: async (req, res) =>{
-        const {id} = req.body
-        try{
-            await deleteUser(id)
-            res.redirect("/users")
-        }catch (error){
-            console.error("Error adding new user", error)
+    put: async (req, res) => {
+        try {
+            const { id } = req.params;
+            const { firstname, lastname } = req.body; // Extract firstname and lastname from request body
+            await updateUser(id, firstname, lastname);
+            res.json({ success: true });
+
+        } catch (error) {
+            console.error("Error deleting user:", error);
+            res.status(500).json({ success: false, message: "Internal Server Error" });
         }
-    }
+    },
 }
